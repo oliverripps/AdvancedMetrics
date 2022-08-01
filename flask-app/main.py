@@ -11,6 +11,8 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'supersecretkey'
 app.config['UPLOAD_FOLDER'] = 'static/files'
 
+player_dataframe = ""
+
 class UploadFileForm(FlaskForm):
     file = FileField("File", validators=[InputRequired()])
     submit = SubmitField("Upload File")
@@ -24,12 +26,15 @@ def home():
         if file.filename[-4:] != ".csv":
             return "Your input file was not a csv"
         file.save(os.path.join(os.path.abspath(os.path.dirname(__file__)),secure_filename(file.filename)))
-        return print(file.filename)
+        return parse(file.filename)
     return render_template('index.html', form=form)
 
-def print(filename):
+def parse(filename):
     file = open(filename)
     df = pd.read_csv(file)
+    player_dataframe = df
+    for player_stats in df.iterrows():
+        print(player_stats.Number.to_string(index=False)
     html = df.to_html()
     return(html)
     
