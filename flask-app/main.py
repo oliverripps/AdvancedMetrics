@@ -33,8 +33,6 @@ def parse(filename):
     file = open(filename)
     df = pd.read_csv(file)
     player_dataframe = df
-    for player_stats in df.iterrows():
-        print(player_stats.Number.to_string(index=False)
     html = df.to_html()
     return(html)
     
