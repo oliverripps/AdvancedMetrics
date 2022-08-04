@@ -18,6 +18,14 @@
   }
 }
 
+      h1 {
+        color: green;
+      }
+      form {
+        color: white;
+      }
+      .form{
+      }
     </style>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -27,10 +35,22 @@
     <center>
       <img class="rotate_image" src="\static\basketball.png" alt="Basketball Image" />
     </center>
+
     <center>
-        <a href="/upload"> <h1>Upload Stats</h1></a>
-        <a href="/insert"> <h1>Insert Stats</h1></a>
-      </center>
+    <h1>Uploads</h1>
+    </center>
+    <center class = "form">
+    <form method="POST" enctype="multipart/form-data">
+      {{form.hidden_tag()}} {{form.file()}} <br />
+      {{form.address.label}}
+      {{form.address}}
+      <br/>
+      {{form.submit()}}
+    </center>
     </form>
+  <br>
+    <center>
+    <a href="/insert"> Insert Stats</a>
+  </center>
   </body>
 </html>

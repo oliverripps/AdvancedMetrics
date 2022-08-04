@@ -9,6 +9,8 @@ def EFG(FG, TFG, FGA):
 #True Shooting Percentage#
     #Adjusts standard FG% to include their FT%, encompasses all ways to score (my preferred shooting % stat)
 def TS(PTS,FGA,FTA):
+    if(2 * (FGA + .475 * FTA)) == 0:
+        return 0.0
     return PTS / (2 * (FGA + .475 * FTA))
 
 
